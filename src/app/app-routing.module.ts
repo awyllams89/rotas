@@ -7,14 +7,16 @@ import { AuthGuard } from './guards/auth-guard';
 
 const routes: Routes = [
   {path:'cursos', loadChildren: ()=> import('./cursos/cursos.module').then(m=> m.CursosModule),
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    canLoad:[AuthGuard]
   },
   {path:'alunos', loadChildren: ()=> import('./alunos/alunos.module').then(m=> m.AlunosModule),
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
+    canLoad:[AuthGuard]
   },
   {path:'login', component:LoginComponent},
 
-  {path:'', component:HomeComponent, canActivate:[AuthGuard]},
+  {path:'', component:HomeComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({
