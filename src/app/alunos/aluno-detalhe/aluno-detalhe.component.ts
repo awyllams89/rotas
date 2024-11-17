@@ -13,7 +13,9 @@ export class AlunoDetalheComponent implements OnInit, OnDestroy {
   id: number;
   inscricao: Subscription;
   aluno: any;
-  constructor(private service: AlunosService, private route: ActivatedRoute) { }
+  constructor(private service: AlunosService,
+    private route: ActivatedRoute,
+  private router: Router) { }
 
   ngOnInit(): void {
     this.inscricao = this.route.params.subscribe(
@@ -29,6 +31,10 @@ export class AlunoDetalheComponent implements OnInit, OnDestroy {
       console.log('aluno não encontrado')
     }
 
+  }
+
+  editarContato(){
+    this.router.navigate(['/alunos', this.aluno.id, 'editar'],{})
   }
 
   ngOnDestroy(){

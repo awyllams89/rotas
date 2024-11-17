@@ -9,8 +9,8 @@ export class AlunosService {
 
   getAlunos(): any[]{
     return [
-      { id:1,nome:'Allan Borges'},
-      { id:2,nome:'Rayane Borges'}
+      { id:1,nome:'Allan Borges', email:'allan@allan.com'},
+      { id:2,nome:'Rayane Borges', email:'ray@ray.com'}
     ]
   }
 
