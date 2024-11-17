@@ -12,10 +12,9 @@ const routes: Routes = [
   {path:'alunos', loadChildren: ()=> import('./alunos/alunos.module').then(m=> m.AlunosModule),
     canActivate:[AuthGuard]
   },
+  {path:'login', component:LoginComponent},
 
   {path:'', component:HomeComponent, canActivate:[AuthGuard]},
-  {path:'login', component:LoginComponent}
-
 ];
 
 @NgModule({

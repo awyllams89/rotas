@@ -16,7 +16,6 @@ export class AlunosService {
 
   getAluno(id:number){
     const itens = this.getAlunos().find(item => item.id == id);
-    console.log(itens);
     return itens;
   }
 }

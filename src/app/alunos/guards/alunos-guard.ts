@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../login/auth.service';
+import { AuthService } from '../../login/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class AlunosGuard implements CanActivateChild {
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    console.log('entrou no guarda child');
+    console.log('AlunosGuard');
     if(state.url.includes('editar')){
       // alert('usuario sem acesso')
       // return false;

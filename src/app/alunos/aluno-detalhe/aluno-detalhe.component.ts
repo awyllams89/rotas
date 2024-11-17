@@ -2,6 +2,7 @@ import { AlunosService } from './../alunos.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Aluno } from '../models/aluno';
 
 @Component({
   selector: 'app-aluno-detalhe',
@@ -12,25 +13,23 @@ export class AlunoDetalheComponent implements OnInit, OnDestroy {
 
   id: number;
   inscricao: Subscription;
-  aluno: any;
+  aluno: Aluno;
   constructor(private service: AlunosService,
     private route: ActivatedRoute,
   private router: Router) { }
 
   ngOnInit(): void {
-    this.inscricao = this.route.params.subscribe(
-      (params: any)=>{
-        this.id = params['id']
+    console.log('ngOnit: AlunoDetalheComponent')
 
-        this.aluno = this.service.getAluno(this.id);
+    this.inscricao = this.route.data.subscribe(
+      (info)=>{
+        console.log('recebendo o obj Aluno do Resolver')
+        console.log(info);
+        this.aluno = info['aluno'];
+        console.log(this.aluno.id)
+
       }
     )
-
-
-    if(this.aluno == null){
-      console.log('aluno não encontrado')
-    }
-
   }
 
   editarContato(){
