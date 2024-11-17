@@ -5,10 +5,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { AlunosComponent } from './alunos.component';
 
 const routes: Routes = [
-  {path:'alunos', component: AlunosComponent},
-  {path:'alunos/novo', component: AlunoFormComponent}
-  {path:'alunos/:id/editar', component: AlunoFormComponent},
-  {path:'alunos/:id', component: AlunoDetalheComponent},
+  {path:'alunos', component: AlunosComponent, children:[
+    {path:'novo', component: AlunoFormComponent},
+    {path:':id', component: AlunoDetalheComponent},
+    {path:':id/editar', component: AlunoFormComponent},
+  ]},
 ];
 
 @NgModule({
