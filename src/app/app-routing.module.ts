@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth-guard';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 
 const routes: Routes = [
   {path:'cursos', loadChildren: ()=> import('./cursos/cursos.module').then(m=> m.CursosModule),
@@ -16,7 +17,10 @@ const routes: Routes = [
   },
   {path:'login', component:LoginComponent},
 
-  {path:'', component:HomeComponent, canActivate:[AuthGuard]}
+  {path:'', component:HomeComponent, canActivate:[AuthGuard]},
+
+  {path:'**', component:PaginaNaoEncontradaComponent}
+
 ];
 
 @NgModule({
