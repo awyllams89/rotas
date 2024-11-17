@@ -3,17 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { AuthGuardService } from './guards/auth-guard.service';
+import { AuthGuard } from './guards/auth-guard';
+import { AlunosGuard } from './guards/alunos-guard';
 
 const routes: Routes = [
   {path:'cursos', loadChildren: ()=> import('./cursos/cursos.module').then(m=> m.CursosModule),
-    canActivate:[AuthGuardService]
+    canActivate:[AuthGuard]
   },
   {path:'alunos', loadChildren: ()=> import('./alunos/alunos.module').then(m=> m.AlunosModule),
-    canActivate:[AuthGuardService]
+    canActivate:[AuthGuard],
+    canActivateChild:[AlunosGuard]
   },
 
-  {path:'', component:HomeComponent, canActivate:[AuthGuardService]},
+  {path:'', component:HomeComponent, canActivate:[AuthGuard]},
   {path:'login', component:LoginComponent}
 
 ];

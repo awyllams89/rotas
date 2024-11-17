@@ -10,7 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './login/auth.service';
 import { FormsModule } from '@angular/forms';
-import { AuthGuardService } from './guards/auth-guard.service';
+import { AuthGuard } from './guards/auth-guard';
+import { AlunosGuard } from './guards/alunos-guard';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { AuthGuardService } from './guards/auth-guard.service';
     FormsModule,
     MaterializeModule
   ],
-  providers: [AuthService, AuthGuardService],
+  providers: [AuthService, AuthGuard, AlunosGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
